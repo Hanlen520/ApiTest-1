@@ -1,0 +1,15 @@
+{
+	"client": {
+		"caller": "ios"
+	},
+	"data": {
+		"userId": 4244963,
+		"page": 1,
+		"pageSize": 500,
+		"sessionId": "694be671159f410ca20384a858d02621"
+	},
+	"sign": "76ebaa5e28b328d9768900e494988211",
+	"versionCode": 33,
+	"id": 100,
+	"sessionId": "694be671159f410ca20384a858d02621"
+}
