@@ -11,7 +11,7 @@ if __name__ == '__main__':
     suiteTest.addTest(TestCaseDemo('chqtest_Case1'))
     suiteTest.addTest(TestCaseDemo('chqtest_Case2'))
  
-    # 直接启动集合ddd
+    # 直接启动集合,enenene
  #   runner = unittest.TextTestRunner()
  #   runner.run(suiteTest)
     filePath ='F:\\Report.html'       #确定生成报告的路径
