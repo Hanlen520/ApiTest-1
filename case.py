@@ -25,4 +25,4 @@ class TestCaseDemo(unittest.TestCase):
     def chqtest_Case2(self):
         a = 2
         b = 3
-        self.assertEqual(a*b,6,'Result Fail')
+        self.assertEqual(a*b,4,'Result Fail')
