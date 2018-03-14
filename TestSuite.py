@@ -1,30 +1,51 @@
+# -*- coding: utf-8 -*
+
 import unittest
-from case import TestCaseDemo
+from makecase.case import TestCaseDemo
+from common import emailto
 import HTMLTestRunnerCN
+import datetime
+import time, os, sys,json,requests
+import argparse,sys
 
-# Ö¸¶¨²¢Æô¶¯²âÊÔ¼¯ºÏ
 
+
+
+TODAY = datetime.date.today()
+CURRENTDAY = TODAY.strftime('%Y-%m-%d')
     
 if __name__ == '__main__':
 
-    # Ìí¼Ó²âÊÔ¼¯ºÏCase,²¢Æô¶¯
+    
     suiteTest = unittest.TestSuite()
     suiteTest.addTest(TestCaseDemo('chqtest_Case1'))
     suiteTest.addTest(TestCaseDemo('chqtest_Case2'))
  
-    # Ö±½ÓÆô¶¯¼¯ºÏ
- #   runner = unittest.TextTestRunner()
- #   runner.run(suiteTest)
-    filePath ='F:\\Report.html'       #È·¶¨Éú³É±¨¸æµÄÂ·¾¶
+    filePath ='./result/%s Report.html'%CURRENTDAY       
     fp = file(filePath,'wb')
     runner = HTMLTestRunnerCN.HTMLTestRunner(
         stream=fp,
         title=u'TestReport', 
         )
-    # ÔËĞĞ²âÊÔÓÃÀı
+    
     result=runner.run(suiteTest)
+    fp.close()
 
-    # »ñÈ¡½á¹ûÊ§°ÜÓÃÀıÊı
+
+    # å‘é€é‚®ä»¶
+
+    if result.failure_count>0:
+        Status='- Failed'
+    else:
+        Status='- Passed'
+        
+    reuslt_file = open(filePath)
+    result_data = reuslt_file.read()
+    emailto.Send_Mail(result_data, filePath, Status)
+
+
+
+    
     print result
     print result.failure_count
     print result.success_count

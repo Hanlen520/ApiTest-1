@@ -1,5 +1,5 @@
 import unittest
-import api
+import common.api
 import requests
 import json
 
@@ -14,9 +14,9 @@ class TestCaseDemo(unittest.TestCase):
 
         
     def chqtest_Case1(self):
-        apistring=api.getjson('./api.txt')
+        apistring=common.api.getjson('./data/api.txt')
         url='http://capi.cxland.cn/user/getVideoHistory'
-        t=api.getresponse(url,apistring)
+        t=common.api.getresponse(url,apistring)
         j = json.dumps(t).decode('unicode-escape')
         data = json.loads(j)
         self.assertEqual(data["state"]["code"],200,'Result Fail')
