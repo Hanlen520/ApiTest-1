@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
 import unittest
 import common.api
 import requests
@@ -19,6 +22,7 @@ class TestCaseDemo(unittest.TestCase):
         t=common.api.getresponse(url,apistring)
         j = json.dumps(t).decode('unicode-escape')
         data = json.loads(j)
+        # 初始化测试数据库的测试数据（这里加一个插入语句的方法）
         self.assertEqual(data["state"]["code"],200,'Result Fail')
 
 
