@@ -9,7 +9,7 @@ db = MySQLdb.connect("localhost","root","chx175246","test" )
 # 使用cursor()方法获取操作游标 
 cursor1 = db.cursor()
 cursor3 = db.cursor()
-
+cursor4 = db.cursor()
 
 # 使用execute方法执行SQL语句
 
@@ -37,6 +37,7 @@ def Setdata(sql):
 
 # SQL 查询语句
 
+# 查询单条数据
 try:
    # 执行SQL语句
    cursor3.execute("SELECT * FROM demo WHERE name='chqtest1'")
@@ -53,6 +54,21 @@ try:
          (t_userid, t_name, t_phone)
 except Exception, e:
    print e
+
+# 查询多条数据
+
+try:
+   # 执行SQL语句
+   cursor4.execute("SELECT * FROM demo")
+   # 获取所有记录列表
+   results2 = cursor4.fetchall()
+   datas=tuple(results2)
+   for row in results2:
+     print "t_userid=%d,t_name=%s,t_phone=%s" % row
+except Exception, e:
+   print e
+
+
 
 # 关闭数据库连接
 db.close()
